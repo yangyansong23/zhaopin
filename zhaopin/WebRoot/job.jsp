@@ -32,8 +32,13 @@
 				<div class="am-panel-bd">
 					<%
 					    List<JobList> joblist = (List<JobList>) request.getAttribute("JobSearch");
-					    if (null == joblist) {
+					    if (null == joblist || joblist.size()==0) {
 					        System.out.println("JobSearch为什么会是空的呢？");
+					%>
+					<div class="doc-example">
+						<center>无数据</center>
+					</div>
+					<%
 					    } else {
 					        int i = 1;
 					        for (JobList jc : joblist) {
@@ -61,7 +66,8 @@
 										职位：<input type="submit" class="am-btn am-btn-link"
 											value="<%=jc.getZ_jobname()%>" /> 工作城市：<%=jc.getZ_city()%>&nbsp;&nbsp;&nbsp;
 										薪资：<%=jc.getZ_salary()%>
-										<input type="hidden" name="zhpid1" value="<%=jc.getZhaopinid()%>" />
+										<input type="hidden" name="zhpid1"
+											value="<%=jc.getZhaopinid()%>" />
 									</form>
 								</div>
 							</div>
@@ -82,7 +88,7 @@
 			</section>
 	</div>
 
-<%@ include file="rightsidebar.jsp"%>
+	<%@ include file="rightsidebar.jsp"%>
 
 </div>
 

@@ -48,8 +48,13 @@
 
 						<%
 						    List<JobList> jobListCount = (List<JobList>) request.getSession().getAttribute("jobListCount");
-						    if (null == jobListCount) {
+						    if (null == jobListCount || jobListCount.size() == 0) {
 						        System.out.println("jobListCount 为什么会是空的呢？");
+						%>
+						<div class="doc-example">
+							<center>无数据</center>
+						</div>
+						<%
 						    } else {
 						        // int i = 1;
 						        for (JobList jc : jobListCount) {
@@ -84,6 +89,7 @@
 										</form>
 									</div>
 								</div>
+							</article>
 						</div>
 						<br>
 
@@ -91,7 +97,7 @@
 						    }
 						    }
 						%>
-
+						<br>
 						<ul class="am-pagination am-pagination-centered">
 							<li class="am-disabled"><a href="#">&laquo;</a></li>
 							<li class="am-active"><a href="#">1</a></li>
@@ -104,8 +110,13 @@
 
 						<%
 						    List<JobList> joblistTime = (List<JobList>) request.getAttribute("JobListTime");
-						    if (null == joblistTime) {
+						    if (null == joblistTime || joblistTime.size() == 0) {
 						        System.out.println("为什么会是空的呢？");
+						%>
+						<div class="doc-example">
+							<center>无数据</center>
+						</div>
+						<%
 						    } else {
 						        int i = 1;
 						        for (JobList jc : joblistTime) {

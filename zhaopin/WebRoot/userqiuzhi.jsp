@@ -30,7 +30,7 @@
 
 									<%
 									    List<Qiuzhi> qiuzhilist = (List<Qiuzhi>) request.getAttribute("qiuzhilist");
-									    if (null == qiuzhilist) {
+									    if (null == qiuzhilist || qiuzhilist.size() == 0) {
 									        System.out.println("为什么qiuzhi信息是空的呢？");
 									%>
 

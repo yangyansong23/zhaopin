@@ -74,7 +74,7 @@
 							type="hidden" name="qiuzhiid"
 							value="<%=request.getAttribute("qiuzhiid")%>">
 						<button type="submit" class="am-btn am-btn-secondary am-radius">邀请投递</button>
-						<button type="button" class="am-btn am-btn-secondary am-radius">发邮件</button>
+						<!-- <button type="button" class="am-btn am-btn-secondary am-radius">发邮件</button> -->
 					</form>
 		</article>
 	</div>

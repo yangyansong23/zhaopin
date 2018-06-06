@@ -32,9 +32,9 @@ public class QiuzhixinDAO extends DAOSupport {
     /*
      * 修改求职信
      */
-    public boolean updateQiuzhixin(int qiuzhixinid) {
-        String sql = "update qiuzhixin set q_time=? where qiuzhixinid=?";
-        Object[] params = new Object[] { new Date(), qiuzhixinid };
+    public boolean updateQiuzhixinSts(int qiuzhixinid, String msg) {
+        String sql = "update qiuzhixin set status=? where qiuzhixinid=?";
+        Object[] params = new Object[] { msg, qiuzhixinid };
         int i = 0;
         try {
             i = this.exeucteDML(sql, params);

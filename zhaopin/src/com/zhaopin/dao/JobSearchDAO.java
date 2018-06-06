@@ -57,8 +57,8 @@ public class JobSearchDAO extends DAOSupport {
     // 输入关键字进行查询
     public List<JobList> query(String keyword) {
         List<JobList> list = new ArrayList<JobList>();
-        String sql = "SELECT * from schools c,zhaopin zp where c.schoolid=zp.schoolid and z_jobname = \"" + keyword
-                + "\" or schoolname=\"" + keyword + "\" order by Z_time DESC";
+        String sql = "SELECT * from schools c,zhaopin zp where c.schoolid=zp.schoolid and z_jobname like \"%" + keyword
+                + "%\" or schoolname like \"%" + keyword + "%\" order by Z_time DESC";
         try {
             List<Object[]> data = this.executeDQL(sql, null);
             if (null != data) {

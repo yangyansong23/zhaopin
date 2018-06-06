@@ -24,7 +24,7 @@
 
 					<%
 					    List<ManList> manlist = (List<ManList>) request.getAttribute("manlist");
-					    if (null == manlist) {
+					    if (null == manlist || manlist.size() == 0) {
 					        System.out.println("为什么会是空的呢？");
 					%>
 					<div class="doc-example">
@@ -54,8 +54,9 @@
 										<form class="am-form" action="MandetailServlet" method="post">
 
 											<input type="hidden" name="userid" value=<%=ml.getUserid()%>>
-											<input type="hidden" name="qiuzhiid" value=<%=ml.getQiuzhiid()%>>
-											<i class="am-icon-file-text"></i><input type="submit"
+											<input type="hidden" name="qiuzhiid"
+												value=<%=ml.getQiuzhiid()%>> <i
+												class="am-icon-file-text"></i><input type="submit"
 												class="am-btn am-btn-link" value="简历">
 										</form>
 									</div>
