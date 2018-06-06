@@ -4,7 +4,17 @@
 <%@ include file="head.jsp"%>
 
 <br>
-
+<script type="text/javascript">  
+    function sub() {  
+        // jquery 表单提交   
+        $("#formId").ajaxSubmit(function(message) {   
+        // 对于表单提交成功后处理，message为返回内容   
+        });   
+  
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转   
+    }   
+  
+</script> 
 <div class="am-g am-g-fixed blog-g-fixed">
 
 	<div class="am-u-md-8">
@@ -15,7 +25,6 @@
 			    JobList jobdetail = (JobList) request.getAttribute("jobdetail");
 			    if (null == jobdetail) {
 			        System.out.println("为什么详细信息会是空的呢？");
-			        response.sendRedirect("JobdetailServlet");
 			    } else {
 			        System.out.println("显示详细信息");
 			%>
@@ -24,18 +33,21 @@
 				<div class="am-panel-hd">
 					职位名称：<%=jobdetail.getZ_jobname()%></div>
 				<div class="am-panel-bd">
-
-					职位描述：<br> 工作地点：<%=jobdetail.getZ_city()%>
-					&nbsp;&nbsp;薪资待遇：<%=jobdetail.getZ_salary()%><br> <br>
-					职位描述：<br>
+					工作地点：<%=jobdetail.getZ_city()%><br> <br> 薪资待遇：<%=jobdetail.getZ_salary()%><br>
+					<br> 职位描述：<br>
 					<%=jobdetail.getZ_description()%><br> <br> 任职要求：<br>
 					<%=jobdetail.getZ_requirements()%><br> <br>
 
 					<hr>
-					<button class="am-btn am-btn-secondary am-radius"
-						data-am-popover="{content: '已发送'}">发求职信</button>
-					<button class="am-btn am-btn-secondary am-radius"
-						data-am-popover="{content: '已关注'}">加关注</button>
+					<form id="formId" action="UserEmailServlet" method="post" onsubmit="return sub();">
+						<input type="hidden" name="method" value="sendqzx" >
+						<input type="hidden" name="schoolid" value="<%=jobdetail.getSchoolId()%>" >
+						<input type="hidden" name="zhaopinid" value="<%=jobdetail.getZhaopinid() %>" >
+						<button type="submit" class="am-btn am-btn-secondary am-radius"
+							data-am-popover="{content: '已发送'}">发求职信</button>
+						<button class="am-btn am-btn-secondary am-radius"
+							data-am-popover="{content: '已关注'}">加关注</button>
+					</form>
 		</article>
 	</div>
 

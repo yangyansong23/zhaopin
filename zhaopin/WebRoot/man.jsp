@@ -18,7 +18,7 @@
 			<!--列表框-->
 			<section class="am-panel am-panel-default">
 				<header class="am-panel-hd">
-					<h3 class="am-panel-title">考试题</h3>
+					<h3 class="am-panel-title">精英人才</h3>
 				</header>
 				<div class="am-panel-bd">
 
@@ -26,8 +26,13 @@
 					    List<ManList> manlist = (List<ManList>) request.getAttribute("manlist");
 					    if (null == manlist) {
 					        System.out.println("为什么会是空的呢？");
-					        response.sendRedirect("ManlistServlet");
-
+					%>
+					<div class="doc-example">
+						<center>
+							<span>无数据</span>
+						</center>
+					</div>
+					<%
 					    } else {
 					        int i = 1;
 					        for (ManList ml : manlist) {
@@ -48,7 +53,8 @@
 									<div class="am-comment-actions">
 										<form class="am-form" action="MandetailServlet" method="post">
 
-											<input type="hidden" name="uid" value=<%=ml.getUserid()%>>
+											<input type="hidden" name="userid" value=<%=ml.getUserid()%>>
+											<input type="hidden" name="qiuzhiid" value=<%=ml.getQiuzhiid()%>>
 											<i class="am-icon-file-text"></i><input type="submit"
 												class="am-btn am-btn-link" value="简历">
 										</form>
@@ -57,12 +63,10 @@
 								<div class="am-comment-bd">
 									<p>
 										期望职位：<%=ml.getQ_jobname()%>&nbsp;&nbsp;&nbsp;&nbsp;工作城市：<%=ml.getQ_city()%>
-										&nbsp;&nbsp;&nbsp;&nbsp;期望薪资：<%=ml.getQ_salary()%>
-									</p>
+										&nbsp;&nbsp;&nbsp;&nbsp;期望薪资：<%=ml.getQ_salary()%></p>
 								</div>
 							</div>
 					</div>
-					<br>
 					<%
 					    }
 					    }
@@ -72,8 +76,6 @@
 					<ul class="am-pagination am-pagination-centered">
 						<li class="am-disabled"><a href="#">&laquo;</a></li>
 						<li class="am-active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						
 						<li><a href="#">&raquo;</a></li>
 					</ul>
 
@@ -81,7 +83,7 @@
 			</section>
 	</div>
 
-<%@ include file="rightsidebar.jsp"%>
+	<%@ include file="rightsidebar.jsp"%>
 
 </div>
 

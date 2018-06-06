@@ -20,13 +20,13 @@ public class SchoolsDAO extends DAOSupport {
                 Object[] data = list.get(0);
                 Schools school = new Schools();
                 school.setSchoolId(Integer.parseInt(data[0].toString()));
-                school.setSchoolName(data[1].toString());
-                school.setSchoolPwd(data[2].toString());
-                school.setSchoolEmail(data[3].toString());
-                school.setSchoolLogo(null != data[4] ? data[4].toString() : "");
-                school.setSchoolBrief(null != data[5] ? data[5].toString() : "");
-                school.setSchoolSize(Integer.parseInt(null != data[6] ? data[6].toString() : "7467"));
-                school.setSchoolLocate(null != data[7] ? data[7].toString() : "");
+                school.setSchoolName(null == data[1] ? "" : data[1].toString());
+                school.setSchoolPwd(null == data[2] ? "" : data[2].toString());
+                school.setSchoolEmail(null == data[3] ? "" : data[3].toString());
+                school.setSchoolLogo(null == data[4] ? "" : data[4].toString());
+                school.setSchoolBrief(null == data[5] ? "" : data[5].toString());
+                school.setSchoolSize(Integer.parseInt(null == data[6] ? "0" : data[6].toString()));
+                school.setSchoolLocate(null == data[7] ? "" : data[7].toString());
                 return school;
             }
         } catch (SQLException e) {
@@ -40,8 +40,9 @@ public class SchoolsDAO extends DAOSupport {
      * 学校注册
      */
     public boolean add(Schools school) {
-        String sql = "insert into schools (schoolname,schoolemail,schoolpwd,schoolBrief,schoolLocate) values(?,?,?,?,?)";
-        Object[] params = new Object[] { school.getSchoolName(), school.getSchoolEmail(), school.getSchoolPwd(), "北京石油化工学院是首批获准实施'服务国家特殊需求人才培养项目'的高校", "位于京南大兴新区" };
+        String sql = "insert into schools (schoolname,schoolemail,schoolpwd,schoollogo) values(?,?,?,?)";
+        Object[] params = new Object[] { school.getSchoolName(), school.getSchoolEmail(), school.getSchoolPwd(),
+                "img/default.jpg" };
         int i = 0;
         try {
             i = this.exeucteDML(sql, params);
@@ -53,6 +54,51 @@ public class SchoolsDAO extends DAOSupport {
         if (i > 0)
             return true;
         return false;
+    }
+
+    // 修改学校信息
+    public boolean update(Schools school) {
+        String sql = "update schools set schoolname=?,schoolemail=?,schoolbrief=?,schoolsize=?,schoollocate=? where schoolid=?";
+        Object[] params = new Object[] { school.getSchoolName(), school.getSchoolEmail(), school.getSchoolBrief(),
+                school.getSchoolSize(), school.getSchoolLocate(), school.getSchoolId() };
+        int i = 0;
+        try {
+            i = this.exeucteDML(sql, params);
+        } catch (SQLException e) {
+            System.out.println("更新学校信息失败");
+            e.printStackTrace();
+        }
+        if (i > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * 根据id获取学校信息
+     */
+    public Schools queryById(int schoolid) {
+        String sql = "select * from schools where schoolid = ?";
+        try {
+            List<Object[]> list = this.executeDQL(sql, new Object[] { schoolid });
+            if (list != null && !list.isEmpty()) {
+                Object[] data = list.get(0);
+                Schools school = new Schools();
+                school.setSchoolId(Integer.parseInt(data[0].toString()));
+                school.setSchoolName(data[1].toString());
+                school.setSchoolPwd(data[2].toString());
+                school.setSchoolEmail(data[3].toString());
+                school.setSchoolLogo(data[4].toString());
+                school.setSchoolBrief(data[5].toString());
+                school.setSchoolSize(Integer.parseInt(data[6].toString()));
+                school.setSchoolLocate(data[7].toString());
+                return school;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

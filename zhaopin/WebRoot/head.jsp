@@ -28,18 +28,10 @@
         // response.sendRedirect("login.jsp");
         // return;
     }
-
-    //Cookie cookies[]=request.getCookies();
-    //name=URLDecoder.decode(cookies[1].getValue(),"UTF-8");
-    //type=cookies[2].getValue();
-    //System.out.println("cookie长度："+cookies.length); 
-    //System.out.println("用户名："+name); 
-    //System.out.println("用户类型："+type);
-%>
-<%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+
 %>
 
 <!DOCTYPE html>
@@ -57,6 +49,7 @@
 <link rel="stylesheet" href="css/amazeui.min.css" />
 <link rel="stylesheet" href="css/personal.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -76,6 +69,7 @@
                 <ul id="head-menu" class="am-nav am-nav-pills am-topbar-nav">
                     <li><a href="JobListServlet">首页</a></li>
                     <li><a href="JobSearchServlet">工作职位</a></li>
+                    <li><a href="ManlistServlet">精英人才</a></li>
                 </ul>
 
 
@@ -90,7 +84,7 @@
                     style="display: <%=isLogin ? "none" : ""%>">
                     <a href="login.jsp"
                         class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"
-                        role="button"><span class="am-icon-user"></span> 登录</a>
+                        role="button"><span class="am-icon-user"></span> 登录</a>
                 </div>
 
                 <div class="am-topbar-right"

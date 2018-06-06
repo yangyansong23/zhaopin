@@ -1,17 +1,24 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Experience {
+public class Experience implements Serializable {
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = -6761145071736105695L;
     private int expid;
     private int userid;
-    private String cname;
+    private String sname;
     private String position;
     private Date starttime;
     private Date endtime;
     private String program;
     private String duty;
     private String result;
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     public int getExpid() {
         return expid;
@@ -29,12 +36,12 @@ public class Experience {
         this.userid = userid;
     }
 
-    public String getCname() {
-        return cname;
+    public String getSname() {
+        return sname;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setSname(String sname) {
+        this.sname = sname;
     }
 
     public String getPosition() {
@@ -49,12 +56,20 @@ public class Experience {
         return starttime;
     }
 
+    public String getStarttimeStr() {
+        return formatter.format(starttime);
+    }
+
     public void setStarttime(Date starttime) {
         this.starttime = starttime;
     }
 
     public Date getEndtime() {
         return endtime;
+    }
+
+    public String getEndtimeStr() {
+        return formatter.format(endtime);
     }
 
     public void setEndtime(Date endtime) {

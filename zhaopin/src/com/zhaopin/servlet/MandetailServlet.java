@@ -25,14 +25,14 @@ public class MandetailServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int userid = Integer.parseInt(request.getParameter("uid"));
-
+        int userid = Integer.parseInt(request.getParameter("userid"));
+        String qiuzhiid = request.getParameter("qiuzhiid");
+        request.setAttribute("qiuzhiid", qiuzhiid);
         UsersDAO udao = new UsersDAO();
+        Users users = udao.queryUserById(userid);
+        request.setAttribute("usersInfo", users);
 
-        List<Users> userlist = udao.queryuserinfo(userid);
-        request.setAttribute("userinfolist", userlist);
-
-        List<Experience> Experiencelist = udao.queryuserexperience(userid);
+        List<Experience> Experiencelist = udao.queryExperiences(userid);
         request.setAttribute("experiencelist", Experiencelist);
 
         request.getRequestDispatcher("/mandetail.jsp").forward(request, response);

@@ -8,7 +8,7 @@ public class Zhaopin {
     private String z_jobname;
     private String z_salary;
     private String z_city;
-    private String z_desription;
+    private String z_description;
     private String z_requirements;
     private Date z_time;
     private int z_count;
@@ -54,11 +54,11 @@ public class Zhaopin {
     }
 
     public String getZ_desription() {
-        return z_desription;
+        return z_description;
     }
 
-    public void setZ_desription(String z_desription) {
-        this.z_desription = z_desription;
+    public void setZ_desription(String z_description) {
+        this.z_description = z_description;
     }
 
     public String getZ_requirements() {

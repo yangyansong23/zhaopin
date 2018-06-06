@@ -17,18 +17,25 @@ public class ManListDAO extends DAOSupport {
         try {
             List<Object[]> data = this.executeDQL(sql, null);
             if (null != data) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到ManList数据啦！！");
                 ManList userlist = null;
                 for (Object[] tmp : data) {
                     userlist = new ManList();
                     int i = 0;
                     userlist.setUserid(Integer.parseInt(tmp[i++].toString()));
                     userlist.setUsername(tmp[i++].toString());
+                    i++;
+                    i++;
+                    i++;
                     userlist.setUserphoto(tmp[i++].toString());
+                    i++;
+                    i++;
+                    i++;
                     userlist.setQiuzhiid(Integer.parseInt(tmp[i++].toString()));
+                    i++;
                     userlist.setQ_jobname(tmp[i++].toString());
-                    userlist.setQ_city(tmp[i++].toString());
                     userlist.setQ_salary(tmp[i++].toString());
+                    userlist.setQ_city(tmp[i++].toString());
                     userlist.setQ_time((Date) tmp[i++]);
 
                     list.add(userlist);

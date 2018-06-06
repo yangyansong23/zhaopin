@@ -9,7 +9,7 @@ public class Qiuzhi {
     private String q_salary;
     private String q_city;
     private Date q_time;
-    private String q_describe;
+    // private String q_describe;
 
     public String getQ_jobname() {
         return q_jobname;
@@ -17,14 +17,6 @@ public class Qiuzhi {
 
     public void setQ_jobname(String q_jobname) {
         this.q_jobname = q_jobname;
-    }
-
-    public String getQ_describe() {
-        return q_describe;
-    }
-
-    public void setQ_describe(String q_describe) {
-        this.q_describe = q_describe;
     }
 
     public int getQiuzhiid() {

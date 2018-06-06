@@ -48,6 +48,7 @@ public class SchoolLoginServlet extends HttpServlet {
         } else {
             System.out.println("登录失败");
             request.setAttribute("error", "登录失败，请重新登录");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
 
     }

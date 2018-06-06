@@ -21,8 +21,6 @@
 						<%
 						    if (null == userInfo) {
 						        System.out.println("为什么会是空的呢？");
-						        response.sendRedirect("UserhomeServlet");
-
 						    } else {
 						%>
 
@@ -51,9 +49,9 @@
 								<div class="am-cf">
 									<div class="am-btn-toolbar am-fr">
 										<div class="am-btn-group am-btn-group-xs">
-											<button type="button" class="am-btn am-btn-default">
-												<span class="am-icon-pencil">编辑</span>
-											</button>
+											<a href="useredit.jsp" class="am-btn am-btn-default"> <span
+												class="am-icon-pencil">编辑</span>
+											</a>
 										</div>
 									</div>
 								</div>
@@ -79,9 +77,26 @@
 							<div id="collapse-panel-3" class="am-panel-bd am-collapse am-in">
 								<ul class="am-list admin-content-task">
 									<%
-										List<Experience> experiencelist = (List<Experience>) request.getSession().getAttribute("experiencelist");
-									    if (null == experiencelist) {
+									    List<Experience> experiencelist = (List<Experience>) request.getSession().getAttribute("experiencelist");
+									    if (null == experiencelist || experiencelist.size()==0) {
 									        System.out.println("为什么会项目经验是空的呢？");
+									%>
+
+									<li>
+										<div class="admin-task-meta">
+											<span>无数据</span>
+										</div>
+										<div class="am-cf">
+											<div class="am-btn-toolbar am-fr">
+												<div class="am-btn-group am-btn-group-xs">
+													<a href="userexpedit.jsp" class="am-btn am-btn-default">
+														<span class="am-icon-plus"></span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<%
 									    } else {
 									        int i = 1;
 									        for (Experience exp : experiencelist) {
@@ -91,7 +106,7 @@
 										<div class="admin-task-meta">
 											项目名称：<%=exp.getProgram()%>&nbsp;&nbsp;&nbsp;&nbsp; 项目职位：<%=exp.getPosition()%>&nbsp;&nbsp;&nbsp;&nbsp;
 											项目时间：<%=exp.getStarttime()%>~<%=exp.getEndtime()%><br>
-											工作单位：<%=exp.getCname()%>
+											工作单位：<%=exp.getSname()%>
 
 										</div>
 										<div class="admin-task-bd">
@@ -100,15 +115,16 @@
 										<div class="am-cf">
 											<div class="am-btn-toolbar am-fr">
 												<div class="am-btn-group am-btn-group-xs">
-													<button type="button" class="am-btn am-btn-default">
+													<a href="userexpedit.jsp" class="am-btn am-btn-default">
 														<span class="am-icon-plus"></span>
-													</button>
-													<button type="button" class="am-btn am-btn-default">
+													</a>
+													<a href="UserExpEditServlet?method=update&expid=<%=exp.getExpid() %>" class="am-btn am-btn-default">
 														<span class="am-icon-pencil"></span>
-													</button>
-													<button type="button" class="am-btn am-btn-default">
+													</a>
+													<a href="UserExpEditServlet?method=delete&expid=<%=exp.getExpid() %>" class="am-btn am-btn-default">
 														<span class="am-icon-times"></span>
-													</button>
+													</a>
+													
 												</div>
 											</div>
 										</div>

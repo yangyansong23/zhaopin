@@ -41,30 +41,6 @@ CREATE TABLE users(
 		usergraduate VARCHAR (50) 
 );
 
-CREATE TABLE exam(
-		testid INT (10) auto_increment PRIMARY KEY ,
-		testname VARCHAR (50) ,
-		optiona VARCHAR (50) ,
-		optionb VARCHAR (50),
-		optionc VARCHAR (50),
-		optiond VARCHAR (50),
-		testkey VARCHAR (50),
-		created VARCHAR (50)
-);
-
-CREATE TABLE examwrong(
-		testid INT (10) auto_increment PRIMARY KEY ,
-		testname VARCHAR (50) ,
-		optiona VARCHAR (50) ,
-		optionb VARCHAR (50),
-		optionc VARCHAR (50),
-		optiond VARCHAR (50),
-		testkey VARCHAR (50),
-		yourkey VARCHAR (50),
-		username VARCHAR (50),
-		created VARCHAR (50)
-);
-
 CREATE TABLE experience(
 		expid INT (10) auto_increment PRIMARY KEY ,
 		userid INT (10) NOT NULL,

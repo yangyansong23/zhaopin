@@ -31,8 +31,6 @@ public class ManlistServlet extends HttpServlet {
 
         request.getRequestDispatcher("/man.jsp").forward(request, response);
 
-        // response.sendRedirect("MyJsp.jsp");
-
     }
 
     public void init() throws ServletException {

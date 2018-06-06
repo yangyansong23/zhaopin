@@ -26,7 +26,7 @@
 			<p>
 				<span class="am-icon-bookmark"></span> 公告
 			</p>
-			<p>宁静致远，务本维新。 —— 北京石油化工学院</p>
+			<p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
 		</div>
 	</div>
 
@@ -35,7 +35,7 @@
 			<p>
 				<span class="am-icon-tag"></span> 求职宣言
 			</p>
-			<p> 北京石油化工学院欢迎你!</p>
+			<p>Welcome to the Amaze UI wiki!</p>
 		</div>
 	</div>
 </div>

@@ -74,21 +74,21 @@
 										method="post">
 										<div class="am-g am-margin-top">
 											<input type="hidden" name="user_type" value="school" />
-											<div class="am-u-sm-3 am-text-right">学校：</div>
+											<div class="am-u-sm-3 am-text-right">学校名称：</div>
 											<div class="am-u-sm-8">
-												<input type="text" name="school"
+												<input type="text" name="schoolname"
 													class="am-form-field am-radius" placeholder="学校名称" />
 											</div>
 											<br> <br>
-											<div class="am-u-sm-3 am-text-right">邮箱：</div>
+											<div class="am-u-sm-3 am-text-right">学校邮箱：</div>
 											<div class="am-u-sm-8">
-												<input type="text" name="email"
-													class="am-form-field am-radius" placeholder="邮箱账号" />
+												<input type="text" name="schoolemail"
+													class="am-form-field am-radius" placeholder="学校邮箱" />
 											</div>
 											<br> <br>
 											<div class="am-u-sm-3 am-text-right">密码：</div>
 											<div class="am-u-sm-8">
-												<input type="password" name="pwd"
+												<input type="password" name="schoolpwd"
 													class="am-form-field am-radius" placeholder="密码" />
 											</div>
 											<br> <br>

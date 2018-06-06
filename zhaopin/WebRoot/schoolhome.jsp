@@ -21,13 +21,12 @@
 							</div>
 							<div id="collapse-panel-1" class="am-panel-bd am-collapse am-in">
 								<div class="admin-task-bd">
-									<div class="am-u-md-4">
-										学校名称：<%=schoolInfo.getSchoolName()%><br> 学校邮箱：<%=schoolInfo.getSchoolEmail()%><br>
-										学校地址：<%=schoolInfo.getSchoolLocate()%><br> 学校人数：<%=schoolInfo.getSchoolSize()%><br>
-										学校简介：<%=schoolInfo.getSchoolBrief()%><br>
-									</div>
-									<div class="am-u-md-4">
-										<br> <br> <br> <br> <br>
+									<div class="am-u-md-8">
+										学校名称：<%=null == schoolInfo ? "" : schoolInfo.getSchoolName()%><br>
+										学校邮箱：<%=null == schoolInfo ? "" : schoolInfo.getSchoolEmail()%><br>
+										学校地址：<%=null == schoolInfo ? "" : schoolInfo.getSchoolLocate()%><br>
+										学校人数：<%=null == schoolInfo ? "" : schoolInfo.getSchoolSize()%><br>
+										学校简介：<%=null == schoolInfo ? "" : schoolInfo.getSchoolBrief()%><br>
 									</div>
 									<div class="am-u-md-4">
 										<img src="img/default.jpg" title="School Logo"
@@ -39,10 +38,9 @@
 								<div class="am-cf">
 									<div class="am-btn-toolbar am-fr">
 										<div class="am-btn-group am-btn-group-xs">
-											<button type="button" onclick="alert('btn');"
-												class="am-btn am-btn-default">
+											<a href="schooledit.jsp" class="am-btn am-btn-default">
 												<span class="am-icon-pencil">编辑</span>
-											</button>
+											</a>
 										</div>
 									</div>
 								</div>

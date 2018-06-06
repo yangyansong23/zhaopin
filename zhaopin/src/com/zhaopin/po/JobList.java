@@ -1,6 +1,7 @@
 package com.zhaopin.po;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class JobList implements Serializable {
@@ -19,6 +20,12 @@ public class JobList implements Serializable {
     private int zhaopinid;
     private String z_jobname;
     private String z_city;
+    private String z_salary;
+    private Date z_time;
+    private int z_count;
+    private String z_description;
+    private String z_requirements;
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     public String getSchoolEmail() {
         return schoolEmail;
@@ -51,13 +58,6 @@ public class JobList implements Serializable {
     public void setSchoolLocate(String schoolLocate) {
         this.schoolLocate = schoolLocate;
     }
-
-    private String z_salary;
-    private Date z_time;
-    private String z_timeStr;
-    private int z_count;
-    private String z_description;
-    private String z_requirements;
 
     public String getZ_description() {
         return z_description;
@@ -140,11 +140,7 @@ public class JobList implements Serializable {
     }
 
     public String getZ_timeStr() {
-        return z_timeStr;
-    }
-
-    public void setZ_timeStr(String z_timeStr) {
-        this.z_timeStr = z_timeStr;
+        return formatter.format(z_time);
     }
 
     public int getZ_count() {

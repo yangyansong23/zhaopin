@@ -3,7 +3,17 @@
 <%@ include file="head.jsp"%>
 
 <br>
-
+<script type="text/javascript">  
+    function sub() {  
+        // jquery 表单提交   
+        $("#formId").ajaxSubmit(function(message) {   
+        // 对于表单提交成功后处理，message为返回内容   
+        });   
+  
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转   
+    }   
+  
+</script> 
 <div class="am-g am-g-fixed blog-g-fixed">
 
 	<div class="am-u-md-8">
@@ -14,15 +24,13 @@
 				<div class="am-panel-hd">个人简历</div>
 				<div class="am-panel-bd">
 					<%
-					    List<Users> userinfolist = (List<Users>) request.getAttribute("userinfolist");
+					    Users user = (Users) request.getAttribute("usersInfo");
 					    String photosrc = "img/users/2.jpeg";
-					    if (null == userinfolist) {
+					    if (null == user) {
 					        System.out.println("为什么会是空的呢？");
-					        response.sendRedirect("MandetailServlet");
+					        // response.sendRedirect("MandetailServlet");
 
-					    } else {
-					        int i = 1;
-					        for (Users user : userinfolist) {
+					    } else { 
 					%>
 					<B>基本信息：</B><br> 姓名：<%=user.getUsername()%>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,15 +40,9 @@
 					&nbsp;&nbsp; 毕业时间：<%=user.getUsergraduate()%><br>
 					<%
 					    photosrc = user.getUserphoto();
-					%>
-					<br>
-					<%
-					    }
 					    }
 					%>
-
-
-					<B>项目经验：</B><br>
+					<br> <B>项目经验：</B><br>
 
 					<%
 					    List<Experience> experiencelist = (List<Experience>) request.getAttribute("experiencelist");
@@ -50,7 +52,7 @@
 					        int i = 1;
 					        for (Experience exp : experiencelist) {
 					%>
-					项目名称：<%=exp.getProgram()%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 学校名称：<%=exp.getCname()%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					项目名称：<%=exp.getProgram()%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 学校名称：<%=exp.getSname()%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					项目职位：<%=exp.getPosition()%><br> 项目时间：
 
 
@@ -64,8 +66,16 @@
 					%>
 
 					<hr>
-					<button type="button" class="am-btn am-btn-secondary am-radius">邀请投递</button>
-					<button type="button" class="am-btn am-btn-secondary am-radius">发邮件</button>
+					<form id="formId" action="SchoolEmailServlet" method="post"
+						onsubmit="return sub();">
+						<input type="hidden" name="method" value="sendyq"> <input
+							type="hidden" name="userid"
+							value="<%=user.getUserid()%>"> <input
+							type="hidden" name="qiuzhiid"
+							value="<%=request.getAttribute("qiuzhiid")%>">
+						<button type="submit" class="am-btn am-btn-secondary am-radius">邀请投递</button>
+						<button type="button" class="am-btn am-btn-secondary am-radius">发邮件</button>
+					</form>
 		</article>
 	</div>
 
@@ -84,9 +94,8 @@
 			<section class="am-panel am-panel-default">
 				<div class="am-panel-hd">网站介绍</div>
 				<div class="am-panel-bd">
-					<p>中小学教师招聘考试是针对教师这个行业，为应聘者提供最新，最全的职位信息，让他们能够即时获取所需要的内容。<br>
-					已有的教师招聘考试最主要的功能有最新招聘、考试试题、复习资料、在线题库等功能分类等。教师招聘考试不仅对于个人来讲有着重要的意义，对于社会来说也是一种进步。<br>
-					教师招聘考试系统的完善将促进并提高教师招聘的效率，间接性的促进了社会的教育文化发展，好的教育者才能教育出优秀的学子，提高全民的素质。	</p>
+					<p>基于JavaEE技术的猎聘招聘网的设计与实现，天津工业大学软件工程专业毕业设计作品。使用AmazeUI前端框架自适应不同分辨率的屏幕。
+						此项目部署在阿里云云服务器上，供演示使用。希望大家多多指导，让作品变得更优秀！</p>
 				</div>
 			</section>
 

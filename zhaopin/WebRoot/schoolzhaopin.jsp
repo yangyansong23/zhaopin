@@ -25,7 +25,7 @@
 
 									<%
 									    List<JobList> jobLists = (List<JobList>) request.getSession().getAttribute("school-job");
-									    if (null == jobLists) {
+									    if (null == jobLists || jobLists.size()==0) {
 									        System.out.println("为什么会项目经验是空的呢？");
 									%>
 									<li>
@@ -35,15 +35,9 @@
 										<div class="am-cf">
 											<div class="am-btn-toolbar am-fr">
 												<div class="am-btn-group am-btn-group-xs">
-													<button type="button" id="saddzp" class="am-btn am-btn-default">
+													<a href="schoolzhaopinedit.jsp" class="am-btn am-btn-default">
 														<span class="am-icon-plus"></span>
-													</button>
-													<button type="button" id="supdatezp" class="am-btn am-btn-default">
-														<span class="am-icon-pencil"></span>
-													</button>
-													<button type="button" id="sdeletzp" class="am-btn am-btn-default">
-														<span class="am-icon-times"></span>
-													</button>
+													</a>
 												</div>
 											</div>
 										</div>
@@ -63,10 +57,10 @@
 										<div class="am-cf">
 											<div class="am-btn-toolbar am-fr">
 												<div class="am-btn-group am-btn-group-xs">
-													<a href="schooleditzhaopin.jsp" class="am-btn am-btn-default">
+													<a href="schoolzhaopinedit.jsp" class="am-btn am-btn-default">
 														<span class="am-icon-plus"></span>
 													</a>
-													<a href="schooleditzhaopin.jsp?editjob=<%=exp %>" class="am-btn am-btn-default">
+													<a href="SchoolJobServlet?method=update&zhaopinid=<%=exp.getZhaopinid() %>" class="am-btn am-btn-default">
 														<span class="am-icon-pencil"></span>
 													</a>
 													<a href="SchoolJobServlet?method=delete&zhaopinid=<%=exp.getZhaopinid() %>" class="am-btn am-btn-default">

@@ -22,6 +22,8 @@
 <link rel="alternate icon" type="image/png" href="i/favicon.png">
 <link rel="stylesheet" href="css/amazeui.min.css" />
 <link rel="stylesheet" href="css/personal.css" />
+<script type="text/javascript">
+</script>
 </head>
 
 <body>
@@ -39,9 +41,9 @@
 
 			<div class="am-collapse am-topbar-collapse" id="collapse-head">
 				<ul class="am-nav am-nav-pills am-topbar-nav">
-					<li><a href="index.jsp">首页</a></li>
-					<li><a href="job.jsp">工作职位</a></li>
-					<li><a href="man.jsp">考试题</a></li>
+					<li><a href="JobListServlet">首页</a></li>
+                    <li><a href="JobSearchServlet">工作职位</a></li>
+                    <li><a href="ManlistServlet">精英人才</a></li>
 				</ul>
 
 			</div>

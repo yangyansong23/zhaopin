@@ -35,6 +35,8 @@ public class SchoolJobServlet extends HttpServlet {
         if (null != school) {
             // 获取对应的请求参数
             String method = request.getParameter("method");
+            String zhaopinid = request.getParameter("zhaopinid");
+            ZhaopinDAO zhpd = new ZhaopinDAO();
             // 根据请求参数去调用对应的方法。
             if ("add".equals(method)) {
                 Zhaopin zhaopin = new Zhaopin();
@@ -46,17 +48,20 @@ public class SchoolJobServlet extends HttpServlet {
                 zhaopin.setZ_desription(request.getParameter("jobdescription"));
                 zhaopin.setZ_time(new Date());
                 zhaopin.setZ_count(0);
-                ZhaopinDAO zhpd = new ZhaopinDAO();
-                boolean success = zhpd.add(zhaopin);
-                if (success) {
+                if (null != zhaopinid && !"".equals(zhaopinid)) {
+                    zhaopin.setZhaopinid(Integer.parseInt(zhaopinid));
+                    zhpd.update(zhaopin);
+                } else {
+                    zhpd.add(zhaopin);
                 }
 
             } else if ("update".equals(method)) {
                 update(request, response);
+                return;
             }
 
             else if ("delete".equals(method)) {
-                delete(request, response);
+                zhpd.delete(Integer.parseInt(zhaopinid));
             }
 
             JobSearchDAO jobSearchDAO = new JobSearchDAO();
@@ -67,17 +72,22 @@ public class SchoolJobServlet extends HttpServlet {
 
     }
 
-    private void delete(HttpServletRequest request, HttpServletResponse response) {
-        // TODO Auto-generated method stub
-        System.out.println("delete");
-        String zhaopinid = request.getParameter("zhaopinid");
-        System.out.println(zhaopinid);
-
-    }
-
     private void update(HttpServletRequest request, HttpServletResponse response) {
-        // TODO Auto-generated method stub
-        System.out.println("update");
+        // 获取页面传的zhaopinid
+        String zhaopinid = request.getParameter("zhaopinid");
+        // 根据招聘id查询出要编辑的招聘信息传给编辑页面
+        if (null != zhaopinid && !"".equals(zhaopinid)) {
+            ZhaopinDAO zhpd = new ZhaopinDAO();
+            Zhaopin zhaopin = zhpd.queryById(Integer.parseInt(zhaopinid));
+            request.setAttribute("editZhaopin", zhaopin);
+        } else {
+            request.setAttribute("editZhaopin", null);
+        }
+        try {
+            request.getRequestDispatcher("schoolzhaopinedit.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void init() throws ServletException {

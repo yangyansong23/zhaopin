@@ -39,8 +39,8 @@ public class RegisterServlet extends HttpServlet {
             users.setUserpwd(userpwd);
 
             UsersDAO udao = new UsersDAO();
-            if (udao.add(users) == true) {
-                System.out.println("用户注册登录成功");
+            if (udao.addUser(users) == true) {
+                System.out.println("用户注册成功");
                 response.sendRedirect("login.jsp");
 
             } else {
@@ -49,9 +49,9 @@ public class RegisterServlet extends HttpServlet {
             }
 
         } else {
-            String schoolName = request.getParameter("school");
-            String schoolEmail = request.getParameter("email");
-            String schoolPwd = request.getParameter("pwd");
+            String schoolName = request.getParameter("schoolname");
+            String schoolEmail = request.getParameter("schoolemail");
+            String schoolPwd = request.getParameter("schoolpwd");
 
             Schools schools = new Schools();
             schools.setSchoolName(schoolName);
@@ -63,7 +63,7 @@ public class RegisterServlet extends HttpServlet {
                 System.out.println("学校注册成功");
                 response.sendRedirect("login.jsp");
             } else {
-                System.out.println("学校注册登录失败");
+                System.out.println("学校注册失败");
                 request.setAttribute("error", "学校注册失败，请重新注册");
             }
         }

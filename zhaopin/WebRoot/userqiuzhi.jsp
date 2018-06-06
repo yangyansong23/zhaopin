@@ -21,7 +21,7 @@
 						<div class="am-panel am-panel-default">
 							<div class="am-panel-hd am-cf"
 								data-am-collapse="{target: '#collapse-panel-3'}">
-								项目经验<span class="am-icon-chevron-down am-fr"></span>
+								求职信息<span class="am-icon-chevron-down am-fr"></span>
 							</div>
 
 
@@ -31,8 +31,25 @@
 									<%
 									    List<Qiuzhi> qiuzhilist = (List<Qiuzhi>) request.getAttribute("qiuzhilist");
 									    if (null == qiuzhilist) {
-									        System.out.println("为什么会项目经验是空的呢？");
-									
+									        System.out.println("为什么qiuzhi信息是空的呢？");
+									%>
+
+									<li>
+										<div class="admin-task-meta">
+											<span>无数据</span>
+										</div>
+										<div class="admin-task-bd"></div>
+										<div class="am-cf">
+											<div class="am-btn-toolbar am-fr">
+												<div class="am-btn-group am-btn-group-xs">
+													<a href="userqiuzhiedit.jsp" class="am-btn am-btn-default">
+														<span class="am-icon-plus"></span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<%
 									    } else {
 									        int i = 1;
 									        for (Qiuzhi qz : qiuzhilist) {
@@ -40,8 +57,7 @@
 
 									<li>
 										<div class="admin-task-meta">
-											期望职位：<%=qz.getQ_jobname()%>
-											工作城市：<%=qz.getQ_city()%>
+											期望职位：<%=qz.getQ_jobname()%>&nbsp;&nbsp;&nbsp;&nbsp; 工作城市：<%=qz.getQ_city()%>&nbsp;&nbsp;&nbsp;&nbsp;
 											期望薪资：<%=qz.getQ_salary()%>
 
 										</div>
@@ -49,15 +65,16 @@
 										<div class="am-cf">
 											<div class="am-btn-toolbar am-fr">
 												<div class="am-btn-group am-btn-group-xs">
-													<button type="button" class="am-btn am-btn-default">
+													<a href="userqiuzhiedit.jsp" class="am-btn am-btn-default">
 														<span class="am-icon-plus"></span>
-													</button>
-													<button type="button" class="am-btn am-btn-default">
+													</a>
+													<a href="UserQiuzhiEditServlet?method=update&qiuzhiid=<%=qz.getQiuzhiid() %>" class="am-btn am-btn-default">
 														<span class="am-icon-pencil"></span>
-													</button>
-													<button type="button" class="am-btn am-btn-default">
+													</a>
+													<a href="UserQiuzhiEditServlet?method=delete&qiuzhiid=<%=qz.getQiuzhiid() %>" class="am-btn am-btn-default">
 														<span class="am-icon-times"></span>
-													</button>
+													</a>
+													
 												</div>
 											</div>
 										</div>

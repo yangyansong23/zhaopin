@@ -35,43 +35,34 @@
 											</tr>
 										</thead>
 										<tbody>
+											<%
+											    List<Qiuzhixin> qiuzhixinlist = (List<Qiuzhixin>) request.getAttribute("qiuzhixinlist");
+											    if (null == qiuzhixinlist) {
+											%>
 											<tr>
-												<td>2015.06.01</td>
-												<td>百度</td>
-												<td><a href="#">软件工程师</a></td>
-												<td><span class="am-badge am-badge-success am-radius">通过</span></td>
+												<td colspan=4>无数据</td>
 											</tr>
+											<%
+											    } else {
+											        for (Qiuzhixin qzxin : qiuzhixinlist) {
+											%>
 											<tr>
-												<td>2015.03.24</td>
-												<td>谷歌</td>
-												<td><a href="#">Java工程师</a></td>
-												<td><span class="am-badge am-badge-danger am-radius">面试中</span></td>
+												<td><%=qzxin.getQiuzhitimeStr()%></td>
+												<td><%=qzxin.getSchoolname()%></td>
+												<td><a
+													href="JobdetailServlet?zhpid1=<%=qzxin.getZhaopinid()%>"><%=qzxin.getQzx_jobname()%></a></td>
+												<td><span class="am-badge am-radius"><%=qzxin.getStatus()%></span></td>
 											</tr>
-											<tr>
-												<td>2015.02.26</td>
-												<td>腾讯</td>
-												<td><a href="#">软件工程师</a></td>
-												<td><span class="am-badge am-badge-warning am-radius">感兴趣</span></td>
-											</tr>
-											<tr>
-												<td>2015.01.14</td>
-												<td>阿里巴巴</td>
-												<td><a href="#">软件工程师</a></td>
-												<td><span class="am-badge am-badge-secondary am-radius">HR已阅</span></td>
-											</tr>
-											<tr>
-												<td>2014.12.25</td>
-												<td>爱奇艺</td>
-												<td><a href="#">软件工程师</a></td>
-												<td><span class="am-badge am-radius">未通过</span></td>
-											</tr>
+
+											<%
+											    }
+											    }
+											%>
 										</tbody>
 									</table>
-									<br>
 									<ul class="am-pagination am-pagination-centered">
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
 										<li class="am-active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
 										<li><a href="#">&raquo;</a></li>
 									</ul>
 								</div>
@@ -89,10 +80,23 @@
 											</tr>
 										</thead>
 										<tbody>
+										
+										<%
+											    List<Yaoqing> yaoqinglist = (List<Yaoqing>) request.getAttribute("yaoqinglist");
+											    if (null == yaoqinglist) {
+											%>
 											<tr>
-												<td>2014.12.25</td>
-												<td>爱奇艺</td>
-												<td><a href="#">软件工程师</a></td>
+												<td colspan=4>无数据</td>
+											</tr>
+											<%
+											    } else {
+											        for (Yaoqing yqing : yaoqinglist) {
+											%>
+											
+											<tr>
+												<td><%=yqing.getYaoqingtimeStr() %></td>
+												<td><a href="#"><%=yqing.getSchoolname() %></a></td>
+												<td><a href="#"><%=yqing.getQz_jobname() %></a></td>
 												<td>
 													<div class="am-dropdown" data-am-dropdown>
 														<button
@@ -108,13 +112,18 @@
 													</div>
 												</td>
 											</tr>
+											
+											<%
+											    }
+											    }
+											%>
+										
 										</tbody>
 									</table>
 									<br>
 									<ul class="am-pagination am-pagination-centered">
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
 										<li class="am-active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
 										<li><a href="#">&raquo;</a></li>
 									</ul>
 

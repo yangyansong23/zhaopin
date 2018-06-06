@@ -27,12 +27,13 @@ public class UserqiuzhiServlet extends HttpServlet {
 
         System.out.println("执行UserqiuzhiServlet");
 
-		UsersDAO udao = new UsersDAO();
-		
-		HttpSession session = request.getSession();
-		Users user = (Users) session.getAttribute("userInfo");
-		List<Qiuzhi> qiuzhilist = udao.queryuserqiuzhi(user.getUserid());
-		request.setAttribute("qiuzhilist", qiuzhilist);
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userInfo");
+        if (null != user) {
+            UsersDAO udao = new UsersDAO();
+            List<Qiuzhi> qiuzhilist = udao.queryuserqiuzhi(user.getUserid());
+            request.setAttribute("qiuzhilist", qiuzhilist);
+        }
 
         request.getRequestDispatcher("/userqiuzhi.jsp").forward(request, response);
 

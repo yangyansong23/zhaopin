@@ -28,16 +28,6 @@ public class SchoolHomeServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("执行SchoolHomeServlet");
-        /*
-         * int userid = 2;
-         * 
-         * UsersDAO udao = new UsersDAO(); SchoolsDAO cdao = new SchoolsDAO();
-         * List<Users> userlist = udao.queryuserinfo(userid);
-         * request.setAttribute("userinfolist", userlist);
-         * 
-         * List<Experience> Experiencelist = udao.queryuserexperience(userid);
-         * request.setAttribute("experiencelist", Experiencelist);
-         */
         HttpSession session = request.getSession();
         Schools schools = (Schools) session.getAttribute("schoolInfo");
 

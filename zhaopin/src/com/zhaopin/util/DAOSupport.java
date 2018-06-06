@@ -65,7 +65,7 @@ public abstract class DAOSupport {
     }
 
     /**
-     * 用来执行sql语句
+     * 用来执行select的sql语句
      * 
      * @param sql
      *            可以带有占位符“？”的sql语句
@@ -110,6 +110,7 @@ public abstract class DAOSupport {
         return results;
     }
 
+    // 注：此方法暂时没有用到
     protected int[] executeBatch(String sql, Object[][] params) throws SQLException {
         int[] results = null;
         Connection conn = this.getConn();

@@ -14,8 +14,7 @@ import com.zhaopin.po.Users;
 public class UserLoginServlet extends HttpServlet {
 
     public void destroy() {
-        super.destroy(); // Just puts "destroy" string in log
-        // Put your code here
+        super.destroy();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,9 +47,9 @@ public class UserLoginServlet extends HttpServlet {
             response.sendRedirect("UserhomeServlet");
 
         } else {
-            System.out.println("登录失败");
+            System.out.println("用户登录失败");
             request.setAttribute("error", "登录失败，请重新登录");
-            response.sendRedirect("index.jsp");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
 
     }

@@ -32,11 +32,11 @@ public class UserhomeServlet extends HttpServlet {
         Users user = (Users) session.getAttribute("userInfo");
         if (null != user) {
             UsersDAO udao = new UsersDAO();
-            // 根据ID查询会查到集合吗？
-            List<Users> userlist = udao.queryuserinfo(user.getUserid());
-            request.setAttribute("userinfolist", userlist);
+            // // 根据ID查询会查到集合吗？ 答：不会
+            // List<Users> userlist = udao.queryuserinfo(user.getUserid());
+            // request.setAttribute("userinfolist", userlist);
 
-            List<Experience> Experiencelist = udao.queryuserexperience(user.getUserid());
+            List<Experience> Experiencelist = udao.queryExperiences(user.getUserid());
             request.setAttribute("experiencelist", Experiencelist);
             session.setAttribute("experiencelist", Experiencelist);
         }

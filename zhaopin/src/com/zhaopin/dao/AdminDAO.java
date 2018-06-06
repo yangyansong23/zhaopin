@@ -40,7 +40,7 @@ public class AdminDAO extends DAOSupport {
         try {
             List<Object[]> data = this.executeDQL(sql, null);
             if (null != data) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到用户数据啦！！");
                 Users users = null;
                 for (Object[] tmp : data) {
                     users = new Users();
@@ -76,7 +76,7 @@ public class AdminDAO extends DAOSupport {
         try {
             List<Object[]> data = this.executeDQL(sql, null);
             if (null != data) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到学校数据啦！！");
                 Schools schools = null;
                 for (Object[] tmp : data) {
                     schools = new Schools();

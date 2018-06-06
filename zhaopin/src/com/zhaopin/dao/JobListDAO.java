@@ -2,20 +2,21 @@ package com.zhaopin.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.zhaopin.po.JobList;
 import com.zhaopin.util.DAOSupport;
 
 public class JobListDAO extends DAOSupport {
-    //
+    // 获取按count排序的jobList列表
     public List<JobList> queryOrderByCount() {
         List<JobList> list = new ArrayList<JobList>();
         String sql = "SELECT * from schools c,zhaopin zp where c.schoolid=zp.schoolid order by Z_count DESC";
         try {
             List<Object[]> data = this.executeDQL(sql, null);
             if (null != data) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到按count排序的jobList数据啦！！！");
                 JobList joblist = null;
                 for (Object[] tmp : data) {
                     joblist = new JobList();
@@ -35,7 +36,7 @@ public class JobListDAO extends DAOSupport {
                     joblist.setZ_city(tmp[i++].toString());
                     joblist.setZ_description(tmp[i++].toString());
                     joblist.setZ_requirements(tmp[i++].toString());
-                    joblist.setZ_timeStr(tmp[i++].toString());
+                    joblist.setZ_time((Date) tmp[i++]);
                     joblist.setZ_count(Integer.parseInt(tmp[i++].toString()));
 
                     list.add(joblist);
@@ -43,7 +44,7 @@ public class JobListDAO extends DAOSupport {
                 }
 
             } else {
-                System.out.println("没查到数据！");
+                System.out.println("没查到JobList数据！");
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -52,13 +53,14 @@ public class JobListDAO extends DAOSupport {
         return list;
     }
 
+    // 获取按时间time排序的jobList列表
     public List<JobList> queryOrderByTime() {
         List<JobList> list = new ArrayList<JobList>();
         String sql = "SELECT * from schools c,zhaopin zp where c.schoolid=zp.schoolid order by Z_time DESC";
         try {
             List<Object[]> data = this.executeDQL(sql, null);
             if (null != data) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到按时间排序的JobList数据啦！！");
                 JobList joblist = null;
                 for (Object[] tmp : data) {
                     joblist = new JobList();
@@ -78,7 +80,7 @@ public class JobListDAO extends DAOSupport {
                     joblist.setZ_city(tmp[i++].toString());
                     joblist.setZ_description(tmp[i++].toString());
                     joblist.setZ_requirements(tmp[i++].toString());
-                    joblist.setZ_timeStr(tmp[i++].toString());
+                    joblist.setZ_time((Date) tmp[i++]);
                     joblist.setZ_count(Integer.parseInt(tmp[i++].toString()));
 
                     list.add(joblist);
@@ -86,7 +88,7 @@ public class JobListDAO extends DAOSupport {
                 }
 
             } else {
-                System.out.println("没查到数据！");
+                System.out.println("没查到按时间排序的JobList数据！");
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -95,13 +97,14 @@ public class JobListDAO extends DAOSupport {
         return list;
     }
 
+    // 获取jobList详细信息
     public JobList queryAll() {
 
         String sql = "SELECT * from schools c,zhaopin zp where c.schoolid=zp.schoolid and 1=?";
         try {
             List<Object[]> data = this.executeDQL(sql, new Object[] { 1 });
             if (null != data && !data.isEmpty()) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到jobdetail数据啦！！");
                 Object[] tmp = data.get(0);
                 JobList jobdetail = new JobList();
 
@@ -121,7 +124,7 @@ public class JobListDAO extends DAOSupport {
                 jobdetail.setZ_city(tmp[i++].toString());
                 jobdetail.setZ_description(tmp[i++].toString());
                 jobdetail.setZ_requirements(tmp[i++].toString());
-                jobdetail.setZ_timeStr(tmp[i++].toString());
+                jobdetail.setZ_time((Date) tmp[i++]);
                 jobdetail.setZ_count(Integer.parseInt(tmp[i++].toString()));
 
                 return jobdetail;
@@ -135,15 +138,13 @@ public class JobListDAO extends DAOSupport {
 
     }
 
-    public JobList queryDetailById(int zid2) {
-
-        int zid = zid2;
+    public JobList queryDetailById(int zid) {
 
         String sql = "SELECT * from schools c,zhaopin zp where c.schoolid=zp.schoolid and zhaopinid = ? ";
         try {
             List<Object[]> data = this.executeDQL(sql, new Object[] { zid });
             if (null != data && !data.isEmpty()) {
-                System.out.println("查到数据啦！！");
+                System.out.println("查到按照zhaopinid过滤的Joblist数据啦！！");
                 Object[] tmp = data.get(0);
                 JobList jobdetail = new JobList();
 
@@ -163,14 +164,13 @@ public class JobListDAO extends DAOSupport {
                 jobdetail.setZ_city(tmp[i++].toString());
                 jobdetail.setZ_description(tmp[i++].toString());
                 jobdetail.setZ_requirements(tmp[i++].toString());
-                jobdetail.setZ_timeStr(tmp[i++].toString());
+                jobdetail.setZ_time((Date) tmp[i++]);
                 jobdetail.setZ_count(Integer.parseInt(tmp[i++].toString()));
 
                 return jobdetail;
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;

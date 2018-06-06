@@ -28,14 +28,12 @@ public class JobSearchServlet extends HttpServlet {
 
         JobSearchDAO jsdao = new JobSearchDAO();
 
-        if (keyword == null || keyword.equals("")) {
+        if (keyword == null || "".equals(keyword.trim())) {
             // 默认显示全部
             List<JobList> joblist = jsdao.query();
             request.setAttribute("JobSearch", joblist);
             request.getRequestDispatcher("/job.jsp").forward(request, response);
-        }
-
-        else {
+        } else {
             // 搜索查询条件
             List<JobList> list = jsdao.query(keyword);
             request.setAttribute("JobSearch", list);
