@@ -22,8 +22,6 @@
 <link rel="alternate icon" type="image/png" href="i/favicon.png">
 <link rel="stylesheet" href="css/amazeui.min.css" />
 <link rel="stylesheet" href="css/personal.css" />
-<script type="text/javascript">
-</script>
 </head>
 
 <body>

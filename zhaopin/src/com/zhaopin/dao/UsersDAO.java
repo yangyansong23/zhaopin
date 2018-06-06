@@ -59,7 +59,7 @@ public class UsersDAO extends DAOSupport {
 
     // 修改用户信息
     public boolean updateUser(Users user) {
-        String sql = "update users set username=?,useremail=?,usergender=?,userphoto,userschool=?,userfield=?,usergraduate=? where userid=?";
+        String sql = "update users set username=?,useremail=?,usergender=?,userphoto=?,userschool=?,userfield=?,usergraduate=? where userid=?";
         Object[] params = new Object[] { user.getUsername(), user.getUseremail(), user.getUsergender(),
                 user.getUserphoto(), user.getUserschool(), user.getUserfield(), user.getUsergraduate(),
                 user.getUserid() };
