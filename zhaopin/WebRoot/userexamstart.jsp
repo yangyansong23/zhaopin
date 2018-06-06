@@ -46,12 +46,12 @@ $(function(){
 		    } else {%>
 		    	<% for (Exam jc : examList) { %>
 		        var val = $('input[name="'+<%=jc.getTestid()%>+'"]:checked').val();
-		        if(val.string() != "undefined"){
-			        alert(val);
-		        	test_s = test_s + ";" + val;
-				    $("#key").val(test_s);
+		        if (val == undefined){
+		        	val = <%=jc.getTestid()%>+"-空";
 		        }
+	        	test_s = test_s + ";" + val;
 		        <%}%>  
+		        $("#key").val(test_s);
 		    <%}%>
 	    });
     	
