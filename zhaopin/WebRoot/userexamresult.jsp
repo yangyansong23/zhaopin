@@ -35,10 +35,10 @@
 													<% int i = 1;
 											        for (ExamResult jc : examListrs) { %>
 														<%=i %>. 题目：<%=jc.getTestname()%><br>
-														<input type="radio" name="<%=jc.getTestid()%>" id="optiona" value="<%=jc.getTestid()%>-A">选项A: <%=jc.getOptiona()%><br>
-														 <input type="radio" name="<%=jc.getTestid()%>"  id="optionb" value="<%=jc.getTestid()%>-B">选项B：<%=jc.getOptionb()%><br>
-														  <input type="radio" name="<%=jc.getTestid()%>"  id="optionc" value="<%=jc.getTestid()%>-C">选项C：<%=jc.getOptionc()%><br>
-														  <input type="radio" name="<%=jc.getTestid()%>"  id="optiond" value="<%=jc.getTestid()%>-D">选项D：<%=jc.getOptiond()%><br>
+														  选项A: <%=jc.getOptiona()%><br>
+														  选项B：<%=jc.getOptionb()%><br>
+														  选项C：<%=jc.getOptionc()%><br>
+														  选项D：<%=jc.getOptiond()%><br>
 														  <span>正确答案：<%=jc.getTestkey()%></span><br> 
 														  <span>你的答案：<%=jc.getYourkey()%></span> <br>
 														  <br>
