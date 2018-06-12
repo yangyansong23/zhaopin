@@ -4,6 +4,7 @@
 <br>
 <br>
 <br>
+<div><center><font color="red"><%=(null == request.getAttribute("error"))?"":request.getAttribute("error") %></font></center></div>
 <div class="get">
 	<div class="am-g am-container">
 		<div class="am-u-lg-12">

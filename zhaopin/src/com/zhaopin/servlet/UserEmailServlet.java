@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.zhaopin.dao.QiuzhixinDAO;
+import com.zhaopin.dao.YaoqingDAO;
 import com.zhaopin.po.Qiuzhixin;
 import com.zhaopin.po.Users;
 import com.zhaopin.po.Yaoqing;
@@ -45,7 +46,7 @@ public class UserEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("执行UserEmailServlet");
-
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("userInfo");
         if (null != user) {
@@ -60,14 +61,20 @@ public class UserEmailServlet extends HttpServlet {
                 if (!qdao.isExistQzx(qiuzhixin)) {
                     qdao.addQiuzhixin(qiuzhixin);
                 }
+            } else if ("reply".equals(method)) {
+                String msg = request.getParameter("msg");
+                String yqid = request.getParameter("yqid");
+                YaoqingDAO yqdao = new YaoqingDAO();
+                yqdao.updateYaoqingSts(Integer.parseInt(yqid), msg);
             }
             List<Yaoqing> yaoqinglist = qdao.queryYaoqingByUserId(user.getUserid());
             request.setAttribute("yaoqinglist", yaoqinglist);
             List<Qiuzhixin> qiuzhixinlist = qdao.queryQiuzhixinByUserId(user.getUserid());
             request.setAttribute("qiuzhixinlist", qiuzhixinlist);
+            request.getRequestDispatcher("/useremail.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("login.jsp");
         }
-
-        request.getRequestDispatcher("/useremail.jsp").forward(request, response);
 
     }
 

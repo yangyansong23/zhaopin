@@ -45,8 +45,8 @@
 						<input type="hidden" name="zhaopinid" value="<%=jobdetail.getZhaopinid() %>" >
 						<button type="submit" class="am-btn am-btn-secondary am-radius"
 							data-am-popover="{content: '已发送'}">发求职信</button>
-						<button class="am-btn am-btn-secondary am-radius"
-							data-am-popover="{content: '已关注'}">加关注</button>
+						<!-- <button class="am-btn am-btn-secondary am-radius"
+							data-am-popover="{content: '已关注'}">加关注</button> -->
 					</form>
 		</article>
 	</div>

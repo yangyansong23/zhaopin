@@ -47,6 +47,23 @@ public class YaoqingDAO extends DAOSupport {
         return false;
     }
 
+    /*
+     * 修改求邀请的状态
+     */
+    public boolean updateYaoqingSts(int yaoqingid, String msg) {
+        String sql = "update yaoqing set status=? where yaoqingid=?";
+        Object[] params = new Object[] { msg, yaoqingid };
+        int i = 0;
+        try {
+            i = this.exeucteDML(sql, params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (i > 0)
+            return true;
+        return false;
+    }
+
     // 根据学校id获取该学校的所有邀请的列表
     public List<Yaoqing> queryYaoqingBySchoolId(int schoolid) {
 

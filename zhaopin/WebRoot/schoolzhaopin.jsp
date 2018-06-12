@@ -26,7 +26,6 @@
 									<%
 									    List<JobList> jobLists = (List<JobList>) request.getSession().getAttribute("school-job");
 									    if (null == jobLists || jobLists.size()==0) {
-									        System.out.println("为什么会项目经验是空的呢？");
 									%>
 									<li>
 										<div class="admin-task-meta">

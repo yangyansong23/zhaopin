@@ -11,12 +11,12 @@
 				<table class="am-table">
 					<%
 					    List<JobList> jobListSide = (List<JobList>) request.getSession().getAttribute("jobListCount");
-					    if (null == jobListSide) {
+					    if (null == jobListSide || jobListSide.size() == 0) {
 					        System.out.println("JobSearch为什么会是空的呢？");
 					%>
-					<tr>
-						<td>无最新数据</td>
-					</tr>
+					<div class="doc-example">
+						<center>无数据</center>
+					</div>
 					<%
 					    } else {
 					        int i = 1;
@@ -40,7 +40,9 @@
 			<div class="am-panel-hd">网站介绍</div>
 			<div class="am-panel-bd">
 				<p>中小学教师招聘考试是针对教师这个行业，为应聘者提供最新，最全的职位信息，让他们能够即时获取所需要的内容。
-					已有的教师招聘考试最主要的功能有最新招聘、考试试题、复习资料、在线题库等功能分类等。教师招聘考试不仅对于个人来讲有着重要的意义，对于社会来说也是一种进步。					教师招聘考试系统的完善将促进并提高教师招聘的效率，间接性的促进了社会的教育文化发展，好的教育者才能教育出优秀的学子，提高全民的素质。	</p>
+					已有的教师招聘考试最主要的功能有最新招聘、考试试题、复习资料、在线题库等功能分类等。教师招聘考试不仅对于个人来讲有着重要的意义，对于社会来说也是一种进步。
+					教师招聘考试系统的完善将促进并提高教师招聘的效率，间接性的促进了社会的教育文化发展，好的教育者才能教育出优秀的学子，提高全民的素质。
+				</p>
 			</div>
 		</section>
 

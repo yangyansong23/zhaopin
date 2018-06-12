@@ -38,20 +38,20 @@
 										<tbody>
 											<%
 											    List<Yaoqing> yaoqinglist = (List<Yaoqing>) request.getAttribute("yaoqinglist");
-											    if (null == yaoqinglist) {
+											    if (null == yaoqinglist || yaoqinglist.size() == 0) {
 											%>
 											<tr>
-												<td colspan=4>无数据</td>
+												<td colspan=4 align="center">无数据</td>
 											</tr>
 											<%
 											    } else {
 											        for (Yaoqing yqing : yaoqinglist) {
 											%>
 											<tr>
-												<td><%=yqing.getYaoqingtimeStr() %></td>
-												<td><a href="#"><%=yqing.getUsername() %></a></td>
-												<td><a href="#"><%=yqing.getQz_jobname() %></a></td>
-												<td><span class="am-badge am-radius"><%=yqing.getStatus() %></span></td>
+												<td><%=yqing.getYaoqingtimeStr()%></td>
+												<td><a href="#"><%=yqing.getUsername()%></a></td>
+												<td><a href="#"><%=yqing.getQz_jobname()%></a></td>
+												<td><span class="am-badge am-radius"><%=yqing.getStatus()%></span></td>
 											</tr>
 											<%
 											    }
@@ -83,10 +83,10 @@
 
 											<%
 											    List<Qiuzhixin> qiuzhixinlist = (List<Qiuzhixin>) request.getAttribute("qiuzhixinlist");
-											    if (null == qiuzhixinlist) {
+											    if (null == qiuzhixinlist || qiuzhixinlist.size() == 0) {
 											%>
 											<tr>
-												<td colspan=4>无数据</td>
+												<td colspan=4 align="center">无数据</td>
 											</tr>
 											<%
 											    } else {
@@ -106,11 +106,21 @@
 																class="am-icon-caret-down"></span>
 														</button>
 														<ul class="am-dropdown-content">
-															<li><a href="#">1. HR已阅</a></li>
-															<li><a href="#">2. 感兴趣</a></li>
-															<li><a href="#">3. 面试中</a></li>
-															<li><a href="#">4. 通过</a></li>
-															<li><a href="#">5. 未通过</a></li>
+															<li><a
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=HR已阅">1.
+																	HR已阅</a></li>
+															<li><a
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=感兴趣">2.
+																	感兴趣</a></li>
+															<li><a
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=面试中">3.
+																	面试中</a></li>
+															<li><a
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=通过">4.
+																	通过</a></li>
+															<li><a
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=未通过">5.
+																	未通过</a></li>
 														</ul>
 													</div>
 												</td>
@@ -122,7 +132,7 @@
 											%>
 										</tbody>
 									</table>
-									<br>
+									<br><br><br><br><br>
 									<ul class="am-pagination am-pagination-centered">
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
 										<li class="am-active"><a href="#">1</a></li>

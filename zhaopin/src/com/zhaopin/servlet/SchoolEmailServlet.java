@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.zhaopin.dao.QiuzhixinDAO;
 import com.zhaopin.dao.YaoqingDAO;
 import com.zhaopin.po.Qiuzhixin;
 import com.zhaopin.po.Schools;
@@ -61,13 +62,20 @@ public class SchoolEmailServlet extends HttpServlet {
                     ydao.addYaoqing(yq);
                 }
 
+            } else if ("reply".equals(method)) {
+                String msg = request.getParameter("msg");
+                String qzhid = request.getParameter("qzhid");
+                QiuzhixinDAO qzhxdao = new QiuzhixinDAO();
+                qzhxdao.updateQiuzhixinSts(Integer.parseInt(qzhid), msg);
             }
             List<Yaoqing> yaoqinglist = ydao.queryYaoqingBySchoolId(Integer.valueOf(school.getSchoolId()));
             request.setAttribute("yaoqinglist", yaoqinglist);
             List<Qiuzhixin> qiuzhixinlist = ydao.queryQiuzhixinBySchoolId(Integer.valueOf(school.getSchoolId()));
             request.setAttribute("qiuzhixinlist", qiuzhixinlist);
+            request.getRequestDispatcher("/schoolemail.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("login.jsp");
         }
-        request.getRequestDispatcher("/schoolemail.jsp").forward(request, response);
     }
 
 }

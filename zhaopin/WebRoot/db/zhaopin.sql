@@ -18,6 +18,9 @@ CREATE TABLE admins(
 		adminpwd VARCHAR (50)
 );
 
+DELETE FROM admins;
+INSERT INTO admins (adminname,adminemail,adminpwd) VALUES ('admin','admin@163.com','123');
+
 CREATE TABLE schools(
 		schoolid INT (10) auto_increment PRIMARY KEY ,
 		schoolname VARCHAR (50),

@@ -1,4 +1,13 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java"
+	import="java.util.*,com.zhaopin.po.*,java.net.URLDecoder"
+	pageEncoding="UTF-8"%>
+
+<%
+    Schools schInfo = (Schools) session.getAttribute("schoolInfo");
+    if (null == schInfo) {
+        response.sendRedirect("index.jsp");
+    }
+%>
 
 <!-- sidebar start -->
 <div class="admin-sidebar">

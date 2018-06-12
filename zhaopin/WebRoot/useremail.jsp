@@ -37,10 +37,10 @@
 										<tbody>
 											<%
 											    List<Qiuzhixin> qiuzhixinlist = (List<Qiuzhixin>) request.getAttribute("qiuzhixinlist");
-											    if (null == qiuzhixinlist) {
+											    if (null == qiuzhixinlist || qiuzhixinlist.size() == 0) {
 											%>
 											<tr>
-												<td colspan=4>无数据</td>
+												<td colspan=4 align="center">无数据</td>
 											</tr>
 											<%
 											    } else {
@@ -80,23 +80,23 @@
 											</tr>
 										</thead>
 										<tbody>
-										
-										<%
+
+											<%
 											    List<Yaoqing> yaoqinglist = (List<Yaoqing>) request.getAttribute("yaoqinglist");
-											    if (null == yaoqinglist) {
+											    if (null == yaoqinglist || yaoqinglist.size() == 0) {
 											%>
 											<tr>
-												<td colspan=4>无数据</td>
+												<td colspan=4 align="center">无数据</td>
 											</tr>
 											<%
 											    } else {
 											        for (Yaoqing yqing : yaoqinglist) {
 											%>
-											
+
 											<tr>
-												<td><%=yqing.getYaoqingtimeStr() %></td>
-												<td><a href="#"><%=yqing.getSchoolname() %></a></td>
-												<td><a href="#"><%=yqing.getQz_jobname() %></a></td>
+												<td><%=yqing.getYaoqingtimeStr()%></td>
+												<td><%=yqing.getSchoolname()%></td>
+												<td><a href="#"><%=yqing.getQz_jobname()%></a></td>
 												<td>
 													<div class="am-dropdown" data-am-dropdown>
 														<button
@@ -106,18 +106,18 @@
 																class="am-icon-caret-down"></span>
 														</button>
 														<ul class="am-dropdown-content">
-															<li><a href="#">1. 没兴趣</a></li>
-															<li><a href="#">2. 感兴趣</a></li>
+															<li><a href="UserEmailServlet?method=reply&yqid=<%=yqing.getYaoqingid() %>&msg=没兴趣">1. 没兴趣</a></li>
+															<li><a href="UserEmailServlet?method=reply&yqid=<%=yqing.getYaoqingid() %>&msg=感兴趣">2. 感兴趣</a></li>
 														</ul>
 													</div>
 												</td>
 											</tr>
-											
+
 											<%
 											    }
 											    }
 											%>
-										
+
 										</tbody>
 									</table>
 									<br>

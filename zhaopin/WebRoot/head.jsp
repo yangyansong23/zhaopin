@@ -1,6 +1,6 @@
 <%@ page language="java"
     import="java.util.*,com.zhaopin.po.*,java.net.URLDecoder"
-    pageEncoding="UTF-8"%>
+    contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
     Users userInfo = (Users) session.getAttribute("userInfo");
@@ -25,8 +25,6 @@
         isLogin = false;
         userUrl = "#";
         username = null;
-        // response.sendRedirect("login.jsp");
-        // return;
     }
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
