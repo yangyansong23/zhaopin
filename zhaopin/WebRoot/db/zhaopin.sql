@@ -101,6 +101,7 @@ CREATE TABLE zhaopin(
 		z_requirement VARCHAR (255),
 		z_time DATE ,
 		z_count INT (10),
+		z_category VARCHAR (255)
 		FOREIGN KEY (schoolid) REFERENCES schools(schoolid)
 );
 

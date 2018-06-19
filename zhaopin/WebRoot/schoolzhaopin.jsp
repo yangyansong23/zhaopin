@@ -50,7 +50,8 @@
 									<li>
 										<div class="admin-task-meta">
 											职位：<%=exp.getZ_jobname()%>&nbsp;&nbsp;&nbsp;&nbsp; 薪资：<%=exp.getZ_salary()%>&nbsp;&nbsp;&nbsp;&nbsp;
-											工作地点：<%=exp.getZ_city()%>&nbsp;&nbsp;&nbsp;&nbsp; 要求：<%=exp.getZ_requirements()%>
+											工作地点：<%=exp.getZ_city()%>&nbsp;&nbsp;&nbsp;&nbsp; 职位分类：<%=exp.getZ_category()%>&nbsp;&nbsp;&nbsp;&nbsp;
+											要求：<%=exp.getZ_requirements()%>
 
 										</div>
 										<div class="am-cf">

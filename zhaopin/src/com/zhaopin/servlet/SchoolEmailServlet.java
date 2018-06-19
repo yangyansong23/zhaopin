@@ -63,7 +63,7 @@ public class SchoolEmailServlet extends HttpServlet {
                 }
 
             } else if ("reply".equals(method)) {
-                String msg = request.getParameter("msg");
+                String msg = java.net.URLDecoder.decode(request.getParameter("msg"), "UTF-8");
                 String qzhid = request.getParameter("qzhid");
                 QiuzhixinDAO qzhxdao = new QiuzhixinDAO();
                 qzhxdao.updateQiuzhixinSts(Integer.parseInt(qzhid), msg);

@@ -32,6 +32,7 @@
 									    String zhcity = "";
 									    String zhrequirement = "";
 									    String zhdescription = "";
+									    String zhrcategory = "";
 									    if (null != expzp) {
 									        // System.out.println("edit...");
 									        zhaopinid = String.valueOf(expzp.getZhaopinid());
@@ -40,6 +41,7 @@
 									        zhcity = expzp.getZ_city();
 									        zhrequirement = expzp.getZ_requirements();
 									        zhdescription = expzp.getZ_desription();
+									        zhrcategory = expzp.getZ_category();
 									    }
 									%>
 
@@ -71,6 +73,13 @@
 										<input type="text" name="jobrequirement"
 											class="am-form-field am-radius" placeholder="职位要求"
 											value="<%=zhrequirement%>" />
+									</div>
+									<br> <br>
+									<div class="am-u-sm-3 am-text-right">职位分类：</div>
+									<div class="am-u-sm-8">
+										<input type="text" name="jobcategory"
+											class="am-form-field am-radius" placeholder="职位分类"
+											value="<%=zhrcategory%>" />
 									</div>
 									<br> <br>
 									<div class="am-u-sm-3 am-text-right">职位描述：</div>

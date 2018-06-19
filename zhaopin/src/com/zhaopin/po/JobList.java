@@ -25,6 +25,7 @@ public class JobList implements Serializable {
     private int z_count;
     private String z_description;
     private String z_requirements;
+    private String z_category;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     public String getSchoolEmail() {
@@ -149,6 +150,14 @@ public class JobList implements Serializable {
 
     public void setZ_count(int z_count) {
         this.z_count = z_count;
+    }
+    
+    public String getZ_category() {
+        return z_category;
+    }
+
+    public void setZ_category(String z_category) {
+        this.z_category = z_category;
     }
 
 }

@@ -106,7 +106,7 @@
 																class="am-icon-caret-down"></span>
 														</button>
 														<ul class="am-dropdown-content">
-															<li><a
+															<%-- <li><a
 																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=HR已阅">1.
 																	HR已阅</a></li>
 															<li><a
@@ -114,12 +114,12 @@
 																	感兴趣</a></li>
 															<li><a
 																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=面试中">3.
-																	面试中</a></li>
+																	面试中</a></li> --%>
 															<li><a
-																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=通过">4.
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=success">4.
 																	通过</a></li>
 															<li><a
-																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=未通过">5.
+																href="SchoolEmailServlet?method=reply&qzhid=<%=qzxin.getQiuzhixinid()%>&msg=fail">5.
 																	未通过</a></li>
 														</ul>
 													</div>

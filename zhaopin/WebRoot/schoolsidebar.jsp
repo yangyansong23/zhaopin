@@ -36,7 +36,7 @@
 			<p>
 				<span class="am-icon-bookmark"></span> 公告
 			</p>
-			<p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+			<p>宁静致远，务本维新。 —— 北京石油化工学院</p>
 		</div>
 	</div>
 

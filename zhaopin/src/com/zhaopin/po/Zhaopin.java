@@ -12,6 +12,7 @@ public class Zhaopin {
     private String z_requirements;
     private Date z_time;
     private int z_count;
+    private String z_category;
 
     public int getZhaopinid() {
         return zhaopinid;
@@ -83,6 +84,14 @@ public class Zhaopin {
 
     public void setZ_count(int z_count) {
         this.z_count = z_count;
+    }
+    
+    public String getZ_category() {
+        return z_category;
+    }
+
+    public void setZ_category(String z_category) {
+        this.z_category = z_category;
     }
 
 }

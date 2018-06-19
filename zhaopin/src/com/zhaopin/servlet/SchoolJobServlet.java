@@ -46,6 +46,7 @@ public class SchoolJobServlet extends HttpServlet {
                 zhaopin.setZ_city(request.getParameter("jobcity"));
                 zhaopin.setZ_requirements(request.getParameter("jobrequirement"));
                 zhaopin.setZ_desription(request.getParameter("jobdescription"));
+                zhaopin.setZ_category(request.getParameter("jobcategory"));
                 zhaopin.setZ_time(new Date());
                 zhaopin.setZ_count(0);
                 if (null != zhaopinid && !"".equals(zhaopinid)) {

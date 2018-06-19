@@ -1,6 +1,7 @@
 package com.zhaopin.dao;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import com.zhaopin.po.Zhaopin;
@@ -10,10 +11,10 @@ public class ZhaopinDAO extends DAOSupport {
 
     // 添加学校招聘信息
     public boolean add(Zhaopin zhaopin) {
-        String sql = "insert into zhaopin (schoolid,z_jobname,z_salary,z_city,z_description,z_requirement,z_time,z_count) values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into zhaopin (schoolid,z_jobname,z_salary,z_city,z_description,z_requirement,z_time,z_count,z_category) values(?,?,?,?,?,?,?,?,?)";
         Object[] params = new Object[] { zhaopin.getSchoolId(), zhaopin.getZ_jobname(), zhaopin.getZ_salary(),
                 zhaopin.getZ_city(), zhaopin.getZ_desription(), zhaopin.getZ_requirements(), zhaopin.getZ_time(),
-                zhaopin.getZ_count() };
+                zhaopin.getZ_count(), zhaopin.getZ_category() };
         int i = 0;
         try {
             i = this.exeucteDML(sql, params);
@@ -84,6 +85,9 @@ public class ZhaopinDAO extends DAOSupport {
                 zhaopin.setZ_city(tmp[i++].toString());
                 zhaopin.setZ_desription(tmp[i++].toString());
                 zhaopin.setZ_requirements(tmp[i++].toString());
+                zhaopin.setZ_time((Date) tmp[i++]);
+                zhaopin.setZ_count(Integer.parseInt(tmp[i++].toString()));
+                zhaopin.setZ_category(tmp[i++].toString());
 
                 return zhaopin;
             }

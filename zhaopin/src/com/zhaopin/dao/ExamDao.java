@@ -197,7 +197,7 @@ public class ExamDao extends DAOSupport {
     	            if (null != data && !data.isEmpty()) {
     	                System.out.println("查到试题答案数据啦！！");
     	                Object[] tmp = data.get(0);
-    	                if (tmp[6].toString() != r[1]) {
+    	                if (!tmp[6].toString().equals(r[1])) {
 	    	                long l = System.currentTimeMillis();
 	    	            	Date time=new Date(l);
 	    	            	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

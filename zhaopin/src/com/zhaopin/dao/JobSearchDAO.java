@@ -119,6 +119,7 @@ public class JobSearchDAO extends DAOSupport {
                     joblist.setZ_requirements(tmp[i++].toString());
                     joblist.setZ_time((Date) tmp[i++]);
                     joblist.setZ_count(Integer.parseInt(tmp[i++].toString()));
+                    joblist.setZ_category(tmp[i++].toString());
                     list.add(joblist);
 
                 }

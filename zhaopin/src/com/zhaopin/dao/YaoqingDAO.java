@@ -100,7 +100,7 @@ public class YaoqingDAO extends DAOSupport {
     public List<Qiuzhixin> queryQiuzhixinBySchoolId(int schoolid) {
 
         List<Qiuzhixin> qiuzhixinlist = new ArrayList<Qiuzhixin>();
-        String sql = "SELECT qzx.*,zp.z_jobname,u.username from qiuzhixin qzx,zhaopin zp,users u where qzx.zhaopinid=zp.zhaopinid and qzx.userid=u.userid and qzx.userid = "
+        String sql = "SELECT qzx.*,zp.z_jobname,u.username from qiuzhixin qzx,zhaopin zp,users u where qzx.zhaopinid=zp.zhaopinid and qzx.userid=u.userid and qzx.schoolid = "
                 + schoolid;
         try {
             List<Object[]> data = this.executeDQL(sql, null);
